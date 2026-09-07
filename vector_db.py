@@ -28,7 +28,7 @@ def split_restaurants(text, source):
     return documents
 
 
-def get_retriever():
+def get_vector_store():
     embeddings = OllamaEmbeddings(model="mxbai-embed-large")
 
     db_location = "./chroma_db"
@@ -62,4 +62,8 @@ def get_retriever():
     if add_docs:
         vector_store.add_documents(documents=documents)
 
-    return vector_store.as_retriever(search_kwargs={"k": 6})
+    return vector_store
+
+
+def get_retriever(k=8):
+    return get_vector_store().as_retriever(search_kwargs={"k": k})
