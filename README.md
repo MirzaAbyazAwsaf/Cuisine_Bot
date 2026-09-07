@@ -34,6 +34,3 @@ python main.py
 - `vector_db.py` - ChromaDB vector store setup
 - `realistic_restaurant_reviews.csv` - Review dataset
 - `requirements.txt` - Python dependencies
-
-
-python -m uvicorn api:app --port 8000
