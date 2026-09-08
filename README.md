@@ -1,4 +1,3 @@
-# Pizza Review Bot
 
 Ask questions about pizza restaurant reviews using a RAG (Retrieval-Augmented Generation) pipeline powered by LangChain, Ollama, and ChromaDB.
 
@@ -34,3 +33,6 @@ python main.py
 - `vector_db.py` - ChromaDB vector store setup
 - `realistic_restaurant_reviews.csv` - Review dataset
 - `requirements.txt` - Python dependencies
+
+
+#python -m uvicorn api:app --reload

@@ -8,6 +8,14 @@ import os
 import re
 
 RESTAURANT_RE = re.compile(r"Restaurant:\s*(.+)")
+NAME_NUM_RE = re.compile(r"^#?\s*\d+\s*[.:)\-\s]*\s*")
+
+
+def clean_restaurant_name(name):
+    if not name:
+        return name
+    return NAME_NUM_RE.sub("", name.strip()).strip()
+
 
 def split_restaurants(text, source):
     blocks = re.split(r"(?=Restaurant:)", text)
@@ -20,7 +28,7 @@ def split_restaurants(text, source):
             Document(
                 page_content=block.strip(),
                 metadata={
-                    "restaurant": match.group(1).strip(),
+                    "restaurant": clean_restaurant_name(match.group(1)),
                     "source": source,
                 },
             )
